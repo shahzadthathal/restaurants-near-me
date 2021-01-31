@@ -17,4 +17,20 @@ Requirement
  -Restaurants name,
  -lat
  -long
+
+
+ ##How to install?
+
+ git clone https://github.com/shahzadthathal/restaurants-near-me
+ 
+ cd restaurants-near-me/server
+ yarn
+ node server.j
+ http://localhost:3000
+
+ open a new terminal and run cd restaurants-near-me/fronted
+ yarn
+ http://localhost:9000/
+
+ #POSTMAN script is also include, import this script into postman and add new restaurants
  
