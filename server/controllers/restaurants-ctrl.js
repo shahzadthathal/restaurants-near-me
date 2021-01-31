@@ -15,7 +15,40 @@ getRestaurants = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+createRestaurant = (req, res) => {
+    const body = req.body
+
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a valid data',
+        })
+    }
+
+    const record = new Restaurant(body)
+
+    if (!record) {
+        return res.status(400).json({ success: false, error: err })
+    }
+
+    record
+        .save()
+        .then(() => {
+            return res.status(201).json({
+                success: true,
+                message: 'Record created!',
+                data:record
+            })
+        })
+        .catch(error => {
+            return res.status(400).json({
+                error,
+                message: 'Record not created!',
+            })
+        })
+}
 
 module.exports = {
-    getRestaurants
+    getRestaurants,
+    createRestaurant
 }

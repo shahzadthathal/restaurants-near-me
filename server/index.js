@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const db = require('./db')
+const restaurantsRouter = require('./routes/restaurants-router')
 
 
 const app = express()
@@ -18,5 +19,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
+
+app.use('/api', restaurantsRouter)
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
